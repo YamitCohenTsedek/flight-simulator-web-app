@@ -15,7 +15,7 @@ namespace Ex3.Controllers
         }
 
         [HttpGet]
-        public ActionResult display(String ip, int port)
+        public ActionResult display(string ip, int port)
         {
             return View();
         }
