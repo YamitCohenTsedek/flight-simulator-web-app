@@ -9,7 +9,7 @@ namespace Ex3.Controllers
 {
     public class DisplayController : Controller
     {
-        private InfoServer server;
+        private ClientSide server;
 
         public DisplayController()
         {
@@ -25,9 +25,9 @@ namespace Ex3.Controllers
         [HttpGet]
         public ActionResult Display(String ip, int port)
         {
-            InfoServer.Instance.Ip = ip;
-            InfoServer.Instance.Port = port.ToString();
-            SimulatorInfo info  = InfoServer.Instance.GetInfoFromSimulator();
+            ClientSide.Instance.Ip = ip;
+            ClientSide.Instance.Port = port;
+            SimulatorInfo info  = ClientSide.Instance.SendCommandsToSimulator();
             Session["lon"] = info.Lon;
             Session["lat"] = info.Lat;
             return View();
