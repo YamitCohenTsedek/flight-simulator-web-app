@@ -21,13 +21,13 @@ namespace Ex3.Controllers
         [HttpGet]
         public ActionResult Display(String ip, int port)
         {
-             
+
             ViewBag.ip = ip;
             ViewBag.port = port;
             ClientSide.Instance.Ip = ip;
             ClientSide.Instance.Port = port;
             ClientSide.Instance.Connect();
-            SimulatorInfo info  = ClientSide.Instance.SendCommandsToSimulator();
+            SimulatorInfo info = ClientSide.Instance.SendCommandsToSimulator();
             ViewBag.lon = Convert.ToDouble(info.Lon);
             ViewBag.lat = Convert.ToDouble(info.Lat);
             return View();
@@ -60,3 +60,4 @@ namespace Ex3.Controllers
 
         }
     }
+}
