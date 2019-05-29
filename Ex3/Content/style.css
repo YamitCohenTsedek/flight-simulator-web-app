@@ -1,6 +1,6 @@
 ﻿body {
     /* The image used */
-    background-image: url(../../Content/earth.png);
+    background-image:url("earth.png");
     /* Full height and width */
     height: 100%;
     width: 100%;

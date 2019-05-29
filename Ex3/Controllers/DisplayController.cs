@@ -27,6 +27,7 @@ namespace Ex3.Controllers
         {
             ClientSide.Instance.Ip = ip;
             ClientSide.Instance.Port = port;
+            ClientSide.Instance.Connect();
             SimulatorInfo info  = ClientSide.Instance.SendCommandsToSimulator();
             Session["lon"] = info.Lon;
             Session["lat"] = info.Lat;
