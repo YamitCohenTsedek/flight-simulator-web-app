@@ -9,16 +9,21 @@ using System.Net;
 
 namespace Ex3.Models
 {
-    // a struct that represents the info that we want to get from the simulator - the lon and the lat
+    // a struct that represents the info that we want to get from the simulator:
+    // the lon, lat, throttle and rudder values
     public struct SimulatorInfo
     {
         public double Lon;
         public double Lat;
+        public double Throttle;
+        public double Rudder;
 
-        public SimulatorInfo(double lonValue, double latValue)
+        public SimulatorInfo(double lonValue, double latValue, double throttleValue, double rudderValue)
         {
             Lon = lonValue;
             Lat = latValue;
+            Throttle = throttleValue;
+            Rudder = rudderValue;
         }
     }
 
@@ -31,8 +36,11 @@ namespace Ex3.Models
         private TcpClient webClient;
         private StreamWriter writer;
         private StreamReader reader;
-        private string lonGetCommand = "get /position/longitude-deg\r\n";
-        private string latGetCommand = "get /position/latitude-deg\r\n";
+        private string lonGetCommand = "get /position/longitude-deg";
+        private string latGetCommand = "get /position/latitude-deg";
+        private string throttleGetCommand = "get /controls/engines/current-engine/throttle";
+        private string rudderGetCommand = "get /controls/flight/rudder";
+
 
         private static ClientSide instance = null;
         public static ClientSide Instance
@@ -90,6 +98,8 @@ namespace Ex3.Models
         {
             double lon;
             double lat;
+            double throttle;
+            double rudder;
             StreamWriter writer = new StreamWriter(webClient.GetStream());
             writer.WriteLine(lonGetCommand);
             writer.Flush();
@@ -97,7 +107,13 @@ namespace Ex3.Models
             writer.WriteLine(latGetCommand);
             writer.Flush();
             lat = Convert.ToDouble(reader.ReadLine());
-            SimulatorInfo info = new SimulatorInfo(lon, lat);
+            writer.WriteLine(throttleGetCommand);
+            writer.Flush();
+            throttle = Convert.ToDouble(reader.ReadLine());
+            writer.WriteLine(rudderGetCommand);
+            writer.Flush();
+            rudder = Convert.ToDouble(reader.ReadLine());
+            SimulatorInfo info = new SimulatorInfo(lon, lat, throttle, rudder);
             return info;
         }
 
