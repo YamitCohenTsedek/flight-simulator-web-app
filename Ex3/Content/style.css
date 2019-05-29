@@ -1,0 +1,12 @@
+﻿body {
+    /* The image used */
+    background-image:url("earth.png");
+    /* Full height and width */
+    height: 100%;
+    width: 100%;
+    /* Center and scale the image nicely */
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
