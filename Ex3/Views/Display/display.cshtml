@@ -16,10 +16,12 @@
         var c = document.getElementById("flightPos");
         var ctx = c.getContext("2d");
         ctx.beginPath();
-        ctx.arc(@LocX, @LocX, 3, 0, 2 * Math.PI);
+        ctx.arc(10, 10, 5, 0, 2 * Math.PI);
         ctx.stroke();
         ctx.fillStyle = "Red";
         ctx.fill();
+        canvas.style.left =@LocX* 100 + "%";
+        canvas.style.top =@LocY* 100 + "%";
         ctx.closePath();
     </script>
 </body>
