@@ -1,29 +1,26 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "display";
 }
 <head>
     <title>flight Position</title>
-    <link rel="stylesheet" type="text/css" href="~/Content/style.css"
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
 </head>
 <body>
-    <canvas id="flighPos"width="20"height="20"style="position:absolute;left:20%;top:20%;"></canvas>
-            @{ 
-                double LocX = (ViewBag.Lat + 90) / 100.0;
-                double LocY = (ViewBag.Log + 180) / 360.0;
-            }
+    <canvas id="flightPos" width="20" height="20" style="position:absolute;left:20%;top:20%;"></canvas>
+    @{
+        double LocX = (@ViewBag.Lat + 90) / 100.0;
+        double LocY = (@ViewBag.Lon + 180) / 360.0;
+    }
 
     <script>
-        var canvas = document.getElementById("flightPos");
-        var ctx = canvas.getContext("2d");
-        ctx.beginpath();
-        ctx.arc(10, 10, 5, 0, 2 * Math.PI);
+        var c = document.getElementById("flightPos");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(@LocX, @LocX, 3, 0, 2 * Math.PI);
         ctx.stroke();
         ctx.fillStyle = "Red";
         ctx.fill();
-        canvas.style.left =@LocX* 100 + "%";
-        canvas.style.top =@LocY* 100 + "%";
+        ctx.closePath();
     </script>
 </body>
-<h2>display</h2>
 

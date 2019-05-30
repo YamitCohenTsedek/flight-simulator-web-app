@@ -4,18 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Ex3.Models;
+using System.Timers;
+
 
 namespace Ex3.Controllers
 {
     public class DisplayController : Controller
     {
-        private ClientSide server;
-
-        public DisplayController()
-        {
-
-        }
-
         // GET: Display
         public ActionResult Index()
         {
@@ -25,14 +20,15 @@ namespace Ex3.Controllers
         [HttpGet]
         public ActionResult Display(String ip, int port)
         {
+            ViewBag.ip = ip;
+            ViewBag.port = port;
             ClientSide.Instance.Ip = ip;
             ClientSide.Instance.Port = port;
             ClientSide.Instance.Connect();
             SimulatorInfo info  = ClientSide.Instance.SendCommandsToSimulator();
-            Session["lon"] = info.Lon;
-            Session["lat"] = info.Lat;
+            ViewBag.Lon = info.Lon;
+            ViewBag.Lat = info.Lat;
             return View();
-
         }
     }
 }
