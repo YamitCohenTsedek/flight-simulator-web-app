@@ -1,28 +1,30 @@
 ﻿@{
     ViewBag.Title = "display";
 }
-<head>
-    <title>flight Position</title>
-    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
-</head>
-<body>
-    <canvas id="flightPos" width="20" height="20" style="position:absolute;left:20%;top:20%;"></canvas>
-    @{
-        double LocX = (@ViewBag.Lat + 90) / 100.0;
-        double LocY = (@ViewBag.Lon + 180) / 360.0;
-    }
 
+<html>
+<body background="~/Content/earth.png" style="background-size:100% 100%; background-attachment:fixed">
+
+    <canvas id="flightLocationCanvas" style="background-size:100% 100%; top:0; left:0; margin:0"></canvas>
     <script>
-        var c = document.getElementById("flightPos");
+        var c = document.getElementById("flightLocationCanvas");
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        c.style.position = "absolute";
         var ctx = c.getContext("2d");
+        var lon = @ViewBag.Lon;
+        var lat = @ViewBag.Lat;
+        var normalizedlon = (lon + 180) * (c.width / 360);
+        var normalizedlat = (lat + 90) * (c.height / 90);
         ctx.beginPath();
-        ctx.arc(10, 10, 5, 0, 2 * Math.PI);
-        ctx.stroke();
+        ctx.lineWidth = 2;
+        ctx.arc(normalizedlon, normalizedlat, 5, 0, 2 * Math.PI);
         ctx.fillStyle = "Red";
         ctx.fill();
-        canvas.style.left =@LocX* 100 + "%";
-        canvas.style.top =@LocY* 100 + "%";
-        ctx.closePath();
+        ctx.strokeStyle = "Blue";
+        ctx.stroke();
+        ctx.closePath(); 
     </script>
-</body>
 
+</body>
+</html>

@@ -105,13 +105,13 @@ namespace Ex3.Models
             stream = new NetworkStream(webClient);
             reader = new StreamReader(stream);
             stream.Write(lonBuff, 0, lonBuff.Length);
-            lon = Double.Parse(reader.ReadLine().Split('\'')[1]);
+            lon = Double.Parse(reader.ReadLine().Split('=')[1].Split('\'')[1]);
             stream.Write(latBuff, 0, latBuff.Length);
-            lat = Double.Parse(reader.ReadLine().Split('\'')[1]);
+            lat = Double.Parse(reader.ReadLine().Split('=')[1].Split('\'')[1]);
             stream.Write(throttleBuff, 0, throttleBuff.Length);
-            throttle = Double.Parse(reader.ReadLine().Split('\'')[1]);
+            throttle = Double.Parse(reader.ReadLine().Split('=')[1].Split('\'')[1]);
             stream.Write(rudderBuff, 0, rudderBuff.Length);
-            rudder = Double.Parse(reader.ReadLine().Split('\'')[1]);
+            rudder = Double.Parse(reader.ReadLine().Split('=')[1].Split('\'')[1]);
             SimulatorInfo info = new SimulatorInfo(lon, lat,
                 throttle, rudder);
             return info;
