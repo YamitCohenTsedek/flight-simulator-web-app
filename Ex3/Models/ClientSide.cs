@@ -92,6 +92,15 @@ namespace Ex3.Models
             IsConnectedToSimulator = true;
         }
 
+        public void Disconnect()
+        {
+            if(IsConnectedToSimulator)
+            {
+                webClient.Close();
+            }
+            IsConnectedToSimulator = false;
+        }
+
         public SimulatorInfo SendCommandsToSimulator()
         {
             Byte[] lonBuff = Encoding.ASCII.GetBytes(lonGetCommand + "\r\n");
@@ -115,13 +124,6 @@ namespace Ex3.Models
             SimulatorInfo info = new SimulatorInfo(lon, lat,
                 throttle, rudder);
             return info;
-        }
-
-        // TODO: add toXML method
-
-        public void Dispose()
-        {
-            webClient.Close();
         }
     }
 }

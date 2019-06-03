@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "ReadAndAnimate";
+}
+
+<html>
+<body background="~/Content/earth.png" style="background-size:100% 100%; background-attachment:fixed">
+    <canvas id="ReadAndAnimateCanvas" style="background-size:100% 100%; top:0; left:0; margin:0"></canvas>
+    <script>
+        var c = document.getElementById("ReadAndAnimateCanvas");
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        c.style.position = "absolute";
+        var ctx = c.getContext("2d");
+        var isStartPoint = 1;
+        var IntervalTime = 1000 * @Session["time"];
+        var oldNormalizedLon;
+        var oldNormalizedLat;
+
+        myTimer = (function () {
+            $.post("@Url.Action("GetValuesFromFile")").done(function (xml) {
+                var xmlDoc = $.parseXML(xml),
+                    $xml = $(xmlDoc);
+                lon = $xml.find("Lon").text();
+                lon = parseFloat(lon);
+                lat = $xml.find("Lat").text();
+                
+                lat = parseFloat(lat);
+                isEnd = $xml.find("IsEnd").text();
+                isEnd = parseFloat(isEnd);
+                var newNormalizedLon = (lon + 180) * (c.width / 360);
+                var newNormalizedLat = (lat + 90) * (c.height / 180);
+                if (isStartPoint) {
+                    if (!isEnd) {
+                        isStartPoint = 0;
+                        ctx.beginPath();
+                        ctx.lineWidth = 3;
+                        ctx.arc(newNormalizedLon, newNormalizedLat, 6, 0, 2 * Math.PI);
+                        ctx.fillStyle = "Red";
+                        ctx.fill();
+                        ctx.strokeStyle = "Blue";
+                        ctx.stroke();
+                        ctx.closePath();
+                        oldNormalizedLon = newNormalizedLon;
+                        oldNormalizedLat = newNormalizedLat;
+                    } else return;
+                } else {
+                    if (!isEnd) {
+                        ctx.beginPath();
+                        ctx.lineWidth = 2;
+                        ctx.lineJoin = 'round';
+                        ctx.moveTo(oldNormalizedLon, oldNormalizedLat);
+                        ctx.lineTo(newNormalizedLon, newNormalizedLat);
+                        oldNormalizedLon = newNormalizedLon;
+                        oldNormalizedLat = newNormalizedLat;
+
+                        ctx.strokeStyle = "Red";
+                        ctx.stroke();
+                        ctx.closePath();
+                    } else {
+                        alert("The flight animation is done!");
+                        clearInterval(t);
+                    }
+                }
+            });
+        });
+
+       var t = setInterval(myTimer, IntervalTime);
+       myTimer();
+    </script>
+</body>
+</html>

@@ -124,13 +124,17 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Display\Display.cshtml" />
+    <Content Include="Views\Display\DisplayLocation.cshtml" />
     <Content Include="Views\Display\Index.cshtml" />
+    <Content Include="Views\Display\Save.cshtml" />
+    <Content Include="Views\Display\ReadAndAnimate.cshtml" />
+    <Content Include="Views\Display\DisplayLine.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -14,11 +14,11 @@
         var ctx = c.getContext("2d");
         var lon = @ViewBag.Lon;
         var lat = @ViewBag.Lat;
-        var normalizedlon = (lon + 180) * (c.width / 360);
-        var normalizedlat = (lat + 90) * (c.height / 180);
+        var normalizedLon = (lon + 180) * (c.width / 360);
+        var normalizedLat = (lat + 90) * (c.height / 180);
         ctx.beginPath();
-        ctx.lineWidth = 2;
-        ctx.arc(normalizedlon, normalizedlat, 6, 0, 2 * Math.PI);
+        ctx.lineWidth = 3;
+        ctx.arc(normalizedLon, normalizedLat, 6, 0, 2 * Math.PI);
         ctx.fillStyle = "Red";
         ctx.fill();
         ctx.strokeStyle = "Blue";
