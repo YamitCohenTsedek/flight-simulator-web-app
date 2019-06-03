@@ -1,0 +1,146 @@
+commit a61b1415a6747a8bd2f3a81a0d6c56f7b49f84be
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Mon Jun 3 21:14:53 2019 +0300
+
+    finished
+
+commit 1c641217a817dda8691d4a5200681cd69150510c
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Fri May 31 09:10:23 2019 +0300
+
+    display.cshtml update
+
+commit 64503623b88ca9424d818d2a13ac418f2e87775f
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Fri May 31 08:30:08 2019 +0300
+
+    Display.cshtmal - fixed: canvas and normalized values
+
+commit 5ab58d708a0bc4b62d0292613ff5f52c59633548
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Thu May 30 07:58:16 2019 +0300
+
+     bugs fix -clientSide, view
+
+commit 237c14dd3aeeafef1c675d027bb1bd797edac618
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Thu May 30 07:28:26 2019 +0300
+
+    bugs fix -clientSide, view
+
+commit 36d4986be44e0da0707acc0027b3d46a3cdba771
+Merge: ba03cab 37b7a59
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Wed May 29 19:04:12 2019 +0300
+
+    update
+
+commit ba03cabea7aeae262ddfabbe3cd8c83c0e6871d7
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Wed May 29 18:57:15 2019 +0300
+
+    update client side
+
+commit 37b7a59183d5867efe0d1db41469e2aea14217ee
+Author: Shiran Golbar <shiran.golbar@live.biu.ac.il>
+Date:   Wed May 29 18:39:04 2019 +0300
+
+    basic view
+
+commit eb97b2bc71f09e3524c420177133de00a49107fc
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Wed May 29 13:57:59 2019 +0300
+
+    update controller and client side
+
+commit 60a0a5487cc93b33deab27d6c62b2a2decea4264
+Author: Shiran Golbar <shiran.golbar@live.biu.ac.il>
+Date:   Wed May 29 13:55:31 2019 +0300
+
+    commit - adding view
+
+commit b9c02afb08e332f9b36ccf0d9b09fdac9e2b9e71
+Merge: 841ad53 38e386e
+Author: Shiran Golbar <shiran.golbar@live.biu.ac.il>
+Date:   Tue May 28 20:22:02 2019 +0300
+
+    update
+
+commit 841ad53255cbf9e64b09da06408f507f0fcfa635
+Author: Shiran Golbar <shiran.golbar@live.biu.ac.il>
+Date:   Tue May 28 20:20:56 2019 +0300
+
+    update
+
+commit 38e386e2629680c269533bebb338092ad05799cc
+Merge: 1edd279 addf815
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Tue May 28 20:09:55 2019 +0300
+
+    adding client side
+
+commit addf8151fbfe3465ddd0160c0f30482baa0c49a5
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Tue May 28 19:59:40 2019 +0300
+
+    adding client side
+
+commit 1edd27962153fb00ade647940948781216eee237
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Tue May 28 18:48:13 2019 +0300
+
+    update
+
+commit 513512cdf789ac530a69488d8a4487bacb4122e9
+Merge: f23d6f8 2f10ac9
+Author: Shiran88 <45919006+Shiran88@users.noreply.github.com>
+Date:   Tue May 28 18:29:34 2019 +0300
+
+    Merge pull request #2 from YamitCohenTsedek/shiran
+    
+    Shiran
+
+commit 2f10ac982b057ef9eb9726fd49f35de26713b3c1
+Author: Shiran Golbar <shiran.golbar@live.biu.ac.il>
+Date:   Tue May 28 18:27:57 2019 +0300
+
+    update
+
+commit daf260c07388aa4f914a4314ae6c71e6f985a980
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Tue May 28 18:23:57 2019 +0300
+
+    update
+
+commit a8621d9ea099bdf2354cbdff2afe107a908d2960
+Author: Shiran Golbar <shiran.golbar@live.biu.ac.il>
+Date:   Tue May 28 18:15:55 2019 +0300
+
+    changes
+
+commit f23d6f8cdcad3ea013624d6a5d99fffadd03359f
+Merge: b78d39f 2143511
+Author: YamitCohenTsedek <45918740+YamitCohenTsedek@users.noreply.github.com>
+Date:   Tue May 28 12:12:05 2019 +0300
+
+    Merge pull request #1 from YamitCohenTsedek/firstChanges
+    
+    first changes
+
+commit 2143511d18d8fec033702acda48638a724d02c1e
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Tue May 28 12:04:40 2019 +0300
+
+    first changes
+
+commit b78d39f210ab49aa224796f873aad1238d80c8da
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Fri May 24 18:12:13 2019 +0300
+
+    initial commit
+
+commit 48d74ceed2c87ef301a2d1ee42888f18f97e93df
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Fri May 24 18:12:00 2019 +0300
+
+    Commit staged

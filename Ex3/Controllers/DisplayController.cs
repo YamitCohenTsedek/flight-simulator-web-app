@@ -12,6 +12,7 @@ namespace Ex3.Controllers
 {
     public class DisplayController : Controller
     {
+        
         private static List<string> fileLinesList = new List<string>();
         private static int numOfCurrentLine = 0;
         private static int numOfLinesInFile = 0;
@@ -145,6 +146,9 @@ namespace Ex3.Controllers
 
         private void ReadFromFile()
         {
+            new List<string>();
+            numOfCurrentLine = 0;
+            numOfLinesInFile = 0;
             string fileName = (string)Session["fileName"];
             string filePath = AppDomain.CurrentDomain.BaseDirectory + @"\" + fileName + ".txt";
             using (var sr = new System.IO.StreamReader(filePath))
