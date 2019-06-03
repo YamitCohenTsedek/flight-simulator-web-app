@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Save";
+}
+
+
+<html>
+<body background="~/Content/earth.png" style="background-size:100% 100%; background-attachment:fixed">
+    <canvas id="flightSaveCanvas" style="background-size:100% 100%; top:0; left:0; margin:0"></canvas>
+    <script>
+        var c = document.getElementById("flightSaveCanvas");
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        c.style.position = "absolute";
+        var ctx = c.getContext("2d");
+        var IntervalTime = 1000 * @Session["time"];
+        var milliseconds = @Session["seconds"] * 1000;
+        var isStartPoint = 1;
+        var oldNormalizedLon;
+        var oldNormalizedLat;
+        myTimer = (function () {
+            $.post("@Url.Action("GetValuesFromSimulatorAndSave")").done(function (xml) {
+                var xmlDoc = $.parseXML(xml),
+                    $xml = $(xmlDoc);
+                lon = $xml.find("Lon").text();
+                lon = parseFloat(lon);
+                lat = $xml.find("Lat").text();
+                lat = parseFloat(lat);
+                var newNormalizedLon = (lon + 180) * (c.width / 360);
+                var newNormalizedLat = (lat + 90) * (c.height / 180);
+
+                if(isStartPoint) {
+                    isStartPoint = 0;
+                    ctx.beginPath();
+                    ctx.lineWidth = 3;
+                    ctx.arc(newNormalizedLon, newNormalizedLat, 6, 0, 2 * Math.PI);
+                    ctx.fillStyle = "Red";
+                    ctx.fill();
+                    ctx.strokeStyle = "Blue";
+                    ctx.stroke();
+                    ctx.closePath();
+                    oldNormalizedLon = newNormalizedLon;
+                    oldNormalizedLat = newNormalizedLat;
+                } else {
+                    ctx.beginPath();
+                    ctx.lineWidth = 2;
+                    ctx.lineJoin = 'round';
+                    ctx.moveTo(oldNormalizedLon, oldNormalizedLat);
+                    ctx.lineTo(newNormalizedLon, newNormalizedLat);
+                    oldNormalizedLon = newNormalizedLon;
+                    oldNormalizedLat = newNormalizedLat;
+                    ctx.strokeStyle = "Red";
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            });
+        });
+        stop = (function () {
+            clearInterval(interval)
+        });
+        setTimeout(stop, milliseconds);
+        var interval = setInterval(myTimer, IntervalTime);
+        myTimer();
+    </script>
+</body>
+</html>
