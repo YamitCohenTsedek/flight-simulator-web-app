@@ -1,3 +1,25 @@
+commit 4c13a23a8a1aba9411e6de4520416ceac0f88b22
+Merge: 448dd5a 436972a
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Mon Jun 3 22:39:40 2019 +0300
+
+    Merge branch 'master' of https://github.com/YamitCohenTsedek/Ex3
+
+commit 448dd5a0b9c391afe2415c1c31098f0e1525fc12
+Author: yamit.ct <yamit.ct@gmail.com>
+Date:   Mon Jun 3 22:39:32 2019 +0300
+
+    finished
+
+commit 436972a22a1031cef8efeada0d4e1749abda1e48
+Merge: b427eed a61b141
+Author: YamitCohenTsedek <45918740+YamitCohenTsedek@users.noreply.github.com>
+Date:   Mon Jun 3 21:47:20 2019 +0300
+
+    Merge pull request #6 from YamitCohenTsedek/firstChanges
+    
+    finished
+
 commit a61b1415a6747a8bd2f3a81a0d6c56f7b49f84be
 Author: yamit.ct <yamit.ct@gmail.com>
 Date:   Mon Jun 3 21:14:53 2019 +0300
@@ -40,6 +62,15 @@ Author: yamit.ct <yamit.ct@gmail.com>
 Date:   Wed May 29 18:57:15 2019 +0300
 
     update client side
+
+commit b427eed618366f1ae61f0e6c13eb72c6d21c1c94
+Merge: 38e386e 37b7a59
+Author: Shiran88 <45919006+Shiran88@users.noreply.github.com>
+Date:   Wed May 29 18:41:23 2019 +0300
+
+    Merge pull request #5 from YamitCohenTsedek/shiranVersion1
+    
+    Shiran version1
 
 commit 37b7a59183d5867efe0d1db41469e2aea14217ee
 Author: Shiran Golbar <shiran.golbar@live.biu.ac.il>

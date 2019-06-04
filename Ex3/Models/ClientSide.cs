@@ -10,8 +10,8 @@ using System.Net;
 
 namespace Ex3.Models
 {
-    // a struct that represents the info that we want to get from the simulator:
-    // the lon, lat, throttle and rudder values
+    // a struct that represents the flight values that we want to get
+    // from the flight simulator: the lon, lat, throttle and rudder values
     public struct SimulatorInfo
     {
         public double Lon;
@@ -28,21 +28,30 @@ namespace Ex3.Models
         }
     }
 
+    // the client side - the web client that connects to the flight simulator (which is the server)
     public class ClientSide
     {
         private IPEndPoint endPoint;
-        private string ip;
-        private int port;
-        private int time;
         private StreamReader reader;
-
         private NetworkStream stream;
         private Socket webClient;
+        
+        // get commands to the flight simulator
         private string lonGetCommand = "get /position/longitude-deg";
         private string latGetCommand = "get /position/latitude-deg";
         private string throttleGetCommand = "get /controls/engines/current-engine/throttle";
         private string rudderGetCommand = "get /controls/flight/rudder";
 
+        public string Ip { get; set; }
+
+        public int Port { get; set; }
+
+        public int Time { get; set; }
+
+        // indicates whether the web client is connected to the flight simulator
+        public bool IsConnectedToSimulator { get; set; } = false;
+
+        // singleton design pattern
         private static ClientSide instance = null;
         public static ClientSide Instance
         {
@@ -54,31 +63,15 @@ namespace Ex3.Models
             }
         }
 
-        public string Ip
-        {
-            get { return ip; }
-            set { ip = value; }
-        }
-
-        public int Port
-        {
-            get { return port; }
-            set { port = value; }
-        }
-
-        public int Time
-        {
-            get { return time; }
-            set { time = value; }
-        }
-
-        public bool IsConnectedToSimulator { get; set; } = false;
-
+        // connect to the flight simulator
         public void Connect()
         {
-            endPoint = new IPEndPoint(IPAddress.Parse(ip), port);
+            // create the end point by the given ip and port
+            endPoint = new IPEndPoint(IPAddress.Parse(Ip), Port);
+            // create the socket of the web client
             webClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            while (webClient.Connected == false)
+            // try to connect to the flight simulator as long as the web client is not connected 
+            while (!(webClient.Connected))
             {
                 try
                 {
@@ -89,9 +82,11 @@ namespace Ex3.Models
                     continue;
                 }
             }
+            // the web client is connected to the simulator
             IsConnectedToSimulator = true;
         }
 
+        // disconnect from the flight simulator
         public void Disconnect()
         {
             if(IsConnectedToSimulator)
@@ -101,8 +96,10 @@ namespace Ex3.Models
             IsConnectedToSimulator = false;
         }
 
-        public SimulatorInfo SendCommandsToSimulator()
+        // sample flight values from the flight simulator
+        public SimulatorInfo SampleFlightValues()
         {
+            // the get commands represented as a bytes array
             Byte[] lonBuff = Encoding.ASCII.GetBytes(lonGetCommand + "\r\n");
             Byte[] latBuff = Encoding.ASCII.GetBytes(latGetCommand + "\r\n");
             Byte[] throttleBuff = Encoding.ASCII.GetBytes(throttleGetCommand + "\r\n");
@@ -111,8 +108,11 @@ namespace Ex3.Models
             double lat;
             double throttle;
             double rudder;
+            // create a new stream and wrap it with a StreamReader
             stream = new NetworkStream(webClient);
             reader = new StreamReader(stream);
+            // write get commands to the flight simulator, read it's response, 
+            // and extract the flight values from it
             stream.Write(lonBuff, 0, lonBuff.Length);
             lon = Double.Parse(reader.ReadLine().Split('=')[1].Split('\'')[1]);
             stream.Write(latBuff, 0, latBuff.Length);

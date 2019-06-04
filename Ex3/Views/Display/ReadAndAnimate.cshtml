@@ -12,8 +12,10 @@
         c.height = window.innerHeight;
         c.style.position = "absolute";
         var ctx = c.getContext("2d");
+        // indicates that we should draw the start point of the flight
         var isStartPoint = 1;
         var IntervalTime = 1000 * @Session["time"];
+       // save the old values of the lon and the lat
         var oldNormalizedLon;
         var oldNormalizedLat;
 
@@ -21,16 +23,20 @@
             $.post("@Url.Action("GetValuesFromFile")").done(function (xml) {
                 var xmlDoc = $.parseXML(xml),
                     $xml = $(xmlDoc);
+                // extract the lon and the lat values
                 lon = $xml.find("Lon").text();
                 lon = parseFloat(lon);
                 lat = $xml.find("Lat").text();
-                
                 lat = parseFloat(lat);
+                // indicates whether we have reached to the end of the file
                 isEnd = $xml.find("IsEnd").text();
                 isEnd = parseFloat(isEnd);
+                // normalize the values of the lon and the lat
                 var newNormalizedLon = (lon + 180) * (c.width / 360);
                 var newNormalizedLat = (lat + 90) * (c.height / 180);
+                // if it's the start point of the flight
                 if (isStartPoint) {
+                    // if we haven't reached to the end of the file - draw the start point
                     if (!isEnd) {
                         isStartPoint = 0;
                         ctx.beginPath();
@@ -43,8 +49,14 @@
                         ctx.closePath();
                         oldNormalizedLon = newNormalizedLon;
                         oldNormalizedLat = newNormalizedLat;
-                    } else return;
+                    // else - we have reached to the end of the file, so alert and finish
+                    } else {
+                        alert("The flight animation is done!");
+                        clearInterval(t);
+                    }
+                // else - it's not the start point of the flight
                 } else {
+                    // if we haven't reached to the end of the file - draw the start point
                     if (!isEnd) {
                         ctx.beginPath();
                         ctx.lineWidth = 2;
@@ -53,10 +65,10 @@
                         ctx.lineTo(newNormalizedLon, newNormalizedLat);
                         oldNormalizedLon = newNormalizedLon;
                         oldNormalizedLat = newNormalizedLat;
-
                         ctx.strokeStyle = "Red";
                         ctx.stroke();
                         ctx.closePath();
+                    // else - we have reached to the end of the file, so alert and finish
                     } else {
                         alert("The flight animation is done!");
                         clearInterval(t);

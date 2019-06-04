@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "DisplayLine";
+    ViewBag.Title = "DisplayRoute";
 }
 
 
@@ -12,24 +12,30 @@
         c.height = window.innerHeight;
         c.style.position = "absolute";
         var ctx = c.getContext("2d");
+        // get the time value from the controller
         var IntervalTime = 1000 * @Session["time"];
+        // indicates that we should draw the start point of the flight
         var isStartPoint = 1;
+        // save the old values of the lon and the lat
         var oldNormalizedLon;
         var oldNormalizedLat;
         myTimer = (function () {
-            $.post("@Url.Action("GetValuesFromSimulatorAndDisplayLine")").done(function (xml) {
+            $.post("@Url.Action("GetValuesFromSimulatorAndDisplayRoute")").done(function (xml) {
                 var xmlDoc = $.parseXML(xml),
                     $xml = $(xmlDoc);
+                // extract the lon and the lat values
                 lon = $xml.find("Lon").text();
                 lon = parseFloat(lon);
                 lat = $xml.find("Lat").text();
                 lat = parseFloat(lat);
+                // normalize the values of the lon and the lat
                 var newNormalizedLon = (lon + 180) * (c.width / 360);
                 var newNormalizedLat = (lat + 90) * (c.height / 180);
+                // if it's the start point of the flight - draw it
                 if(isStartPoint) {
                     isStartPoint = 0;
                     ctx.beginPath();
-                    ctx.lineWidth = 2;
+                    ctx.lineWidth = 3;
                     ctx.arc(newNormalizedLon, newNormalizedLat, 6, 0, 2 * Math.PI);
                     ctx.fillStyle = "Red";
                     ctx.fill();
@@ -38,8 +44,8 @@
                     ctx.closePath();
                     oldNormalizedLon = newNormalizedLon;
                     oldNormalizedLat = newNormalizedLat;
+                // else - draw the flight route
                 } else {
-
                     ctx.beginPath();
                     ctx.lineWidth = 2;
                     ctx.lineJoin = 'round';
@@ -54,8 +60,9 @@
             });
         });
 
+       // calls the timer at the specified interval time
        setInterval(myTimer, IntervalTime);
-        myTimer();
+       myTimer();
     </script>
 </body>
 </html>

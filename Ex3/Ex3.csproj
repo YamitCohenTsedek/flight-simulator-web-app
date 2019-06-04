@@ -128,7 +128,7 @@
     <Content Include="Views\Display\Index.cshtml" />
     <Content Include="Views\Display\Save.cshtml" />
     <Content Include="Views\Display\ReadAndAnimate.cshtml" />
-    <Content Include="Views\Display\DisplayLine.cshtml" />
+    <Content Include="Views\Display\DisplayRoute.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

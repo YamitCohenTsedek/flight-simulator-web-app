@@ -16,26 +16,24 @@ namespace Ex3
             routes.MapRoute(
               name: "display",
               url: "display/{ip}/{port}",
-              defaults: new { controller = "Display", Action = "DisplayLocation" });
+              defaults: new { controller = "Display", action = "DisplayLocation" });
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-                name: "displayLine",
+                name: "displayRoute",
                 url: "display/{ip}/{port}/{time}",
-                defaults: new { controller = "Display", action = "DisplayLine" });
+                defaults: new { controller = "Display", action = "DisplayRoute" });
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-                name: "Save",
+                name: "save",
                 url: "save/{ip}/{port}/{time}/{seconds}/{file}",
                 defaults: new { controller = "Display", action = "Save" }
             );
 
-
-
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-                name: "Default",
+                name: "default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Display", action = "Index", id = UrlParameter.Optional });
         }
