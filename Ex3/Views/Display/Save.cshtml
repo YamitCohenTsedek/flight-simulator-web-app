@@ -3,7 +3,6 @@
     ViewBag.Title = "Save";
 }
 
-
 <html>
 <body background="~/Content/earth.png" style="background-size:100% 100%; background-attachment:fixed">
     <canvas id="flightSaveCanvas" style="background-size:100% 100%; top:0; left:0; margin:0"></canvas>
@@ -29,7 +28,7 @@
                 var newNormalizedLon = (lon + 180) * (c.width / 360);
                 var newNormalizedLat = (lat + 90) * (c.height / 180);
 
-                if(isStartPoint) {
+                if (isStartPoint) {
                     isStartPoint = 0;
                     ctx.beginPath();
                     ctx.lineWidth = 3;

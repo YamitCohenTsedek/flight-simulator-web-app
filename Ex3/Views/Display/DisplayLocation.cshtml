@@ -11,13 +11,13 @@
         c.height = window.innerHeight;
         c.style.position = "absolute";
         var ctx = c.getContext("2d");
-        // get the lan and lot values from the controller
+        // Get the lan & lot values from the controller.
         var lon = @ViewBag.Lon;
         var lat = @ViewBag.Lat;
-        // normalize the values of the lon and the lat
+        // Normalize the values of the lon & lat.
         var normalizedLon = (lon + 180) * (c.width / 360);
         var normalizedLat = (lat + 90) * (c.height / 180);
-        // draw the location of the flight simulator
+        // Draw the location of the aircraft from the flight simulator.
         ctx.beginPath();
         ctx.lineWidth = 3;
         ctx.arc(normalizedLon, normalizedLat, 6, 0, 2 * Math.PI);
