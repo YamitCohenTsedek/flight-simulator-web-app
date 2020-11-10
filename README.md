@@ -1,5 +1,5 @@
 # flight-simulator-web-app
-We have written a web application in the REST architecture that serves the following addresses
+We have written a web application in the REST architecture that serves the following addresses<
 : /display/127.0.0.1/5402 
 o We modeled the position of the aircraft (LON, LAT) from the flight simulator located on 1.0.0.127 at port 5402.
 o The browser will display the position of the plane as a small icon on the screen.
