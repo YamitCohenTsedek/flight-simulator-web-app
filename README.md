@@ -10,7 +10,7 @@ o The screen borders will form the following coordinates:<br />
 o Please note that we only sample the location of the aircraft once and present it<br />
 We will explain in detail:<br />
 
-/ save / \<IP\> / <\port>\ / <seconds> / <seconds-interval> / <file-name><br />
+/ save / \<IP\> / \<port\> / \<seconds\> / \<seconds-interval\> / \<file-name\><br />
 
 Where IP & port are the IP & port that the flight simulator listens on, seconds is the sampling rate,<br />
 seconds-interval is the interval of seconds during which the samples will be taken,<br />
