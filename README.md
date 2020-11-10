@@ -7,7 +7,7 @@ An image will be displayed which will be displayed on the screen and will cover 
 o The screen borders will form the following coordinates:<br />
  latitude - the TOP of the screen will be the value -90 (minus 90) while the BOTTOM will be the value 90.<br />
  Longitude - the RIGHT of the screen will be the value 180 while the LEFT will be the value -180 (minus 180.)<br />
-o Please note that we only sample the location of the aircraft once and present it.<br />
+o Please note that we only sample the location of the aircraft once and present it<br />
 We will explain in detail:<br />
 
 / save / <IP> / <port> / <seconds> / <seconds-interval> / <file-name><br />
