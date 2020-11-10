@@ -9,6 +9,7 @@ o The screen borders will form the following coordinates:
  Longitude - the RIGHT of the screen will be the value 180 while the LEFT will be the value -180 (minus 180.)
 o Please note that we only sample the location of the aircraft once and present it.
 We will explain in detail:
+
 / save / <IP> / <port> / <seconds> / <seconds-interval> / <file-name>
 
 Where IP & port are the IP & port that the flight simulator listens on, seconds is the sampling rate,
